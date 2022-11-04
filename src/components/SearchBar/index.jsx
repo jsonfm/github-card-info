@@ -8,9 +8,11 @@ export const SearchBar = () => {
 
     const stackStyles = {
         width: '80%',
+        margin: '0 auto'
     }
     const textFieldStyles = {
-        width: '90%'
+        width: '90%',
+        margin: '0 auto'
     }
 
     const handleSubmit = () => {

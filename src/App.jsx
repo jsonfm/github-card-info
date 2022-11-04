@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Container, Stack, Box } from "@mui/material";
-import { SearchBar } from "@/components/SearchBar";
+import { Container } from "@mui/material";
 import { Layout } from "@/components/Layout";
 import { UserService } from "@/services/user.service";
-import { Image } from 'mui-image'
+import { Card } from "@/components/Card";
+
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
   },
 });
 
@@ -24,51 +24,26 @@ function App() {
     const fetchData = async () => {
       const response = await userService.getUser();
       setUser(response);
+      console.log("response: ", response);
     }
     fetchData();
-  })
+  }, []);
+
+  const containerStyles = {
+    minHeight: '85vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline/>
       <Layout>
           <Container
-            sx={{
-              minHeight: '85vh',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
+            sx={containerStyles}
           >
-            <Box
-              sx={{
-                width: '100%',
-                minHeight: '400px',
-                maxWidth: '900px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
-              }}
-            >
-              <SearchBar />
-              <Stack
-                sx={{marginTop: "32px"}}
-                direction={{ sm: 'row' }}
-                spacing={4}
-              >
-                <div>
-                  {user &&
-                    <Image
-                      height="300px"
-                      src={user.avatar_url}
-                    />
-                  }
-                </div>
-                <div>
-                  Item
-                </div>
-              </Stack>
-            </Box>
+            <Card user={user}/>
           </Container>
       </Layout>
     </ThemeProvider>
