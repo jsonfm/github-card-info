@@ -1,10 +1,15 @@
 import { Header } from "@/components/Header";
-import { Container } from '@mui/material';
+import { Footer } from "@/components/Footer";
+
+
 export const Layout = ({ children }) => {
     return(
         <>
             <Header/>
-            {children}
+            <main style={{minHeight: "90vh"}}>
+                {children}
+            </main>
+            <Footer />
         </>
     )
 }

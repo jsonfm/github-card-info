@@ -1,36 +1,27 @@
-import { useEffect, useState } from "react";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from "@mui/material";
 import { Layout } from "@/components/Layout";
-import { UserService } from "@/services/user.service";
 import { Card } from "@/components/Card";
-
+import { useUserFecth } from '@/hooks/useUserFecth';
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
   },
 });
 
 
-const userService = new UserService();
-
 function App() {
+  const { user, loading, error } = useUserFecth();
 
-  const [user, setUser] = useState(undefined);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await userService.getUser();
-      setUser(response);
-      console.log("response: ", response);
-    }
-    fetchData();
-  }, []);
+  if(loading){
+    return null;
+  }
 
   const containerStyles = {
-    minHeight: '85vh',
+    minHeight: '70vh',
+    marginTop: '2rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
@@ -43,7 +34,7 @@ function App() {
           <Container
             sx={containerStyles}
           >
-            <Card user={user}/>
+            <Card user={user} />
           </Container>
       </Layout>
     </ThemeProvider>

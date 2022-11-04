@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 
 export const Header = () => {
@@ -8,9 +8,11 @@ export const Header = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                height:"6rem"
             }}
+            
         >
-            <p>Logo</p>
+            <Typography variant="h5"><b>{`<DevSearcher />`}</b></Typography>
             <Brightness4Icon
                 sx={{
                     cursor: 'pointer',
