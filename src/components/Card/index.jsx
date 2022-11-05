@@ -2,9 +2,12 @@ import { SearchBar } from "@/components/SearchBar";
 import { Box } from "@mui/material";
 import { CardData } from "@/components/CardData";
 import { ErrorAlert } from '@/components/ErrorAlert';
-
+import { useAppContext } from "@/store/context";
+import { CardSkeleton } from "@/skeletons/CardSkeleton";
 
 export const Card = () => {
+    const { state } = useAppContext();
+    const { loading } = state;
 
     const boxStyles = {
         width: '100%',
@@ -20,7 +23,7 @@ export const Card = () => {
         sx={boxStyles}
       >
         <SearchBar />
-        <CardData />
+        {!!loading ? <CardSkeleton /> : <CardData />}
         <ErrorAlert />
       </Box>
     )
