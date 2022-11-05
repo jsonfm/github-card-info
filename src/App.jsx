@@ -3,7 +3,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from "@mui/material";
 import { Layout } from "@/components/Layout";
 import { Card } from "@/components/Card";
-import { useUserFecth } from '@/hooks/useUserFecth';
+import { AppProvider } from "@/store/provider";
+
 
 const darkTheme = createTheme({
   palette: {
@@ -13,11 +14,6 @@ const darkTheme = createTheme({
 
 
 function App() {
-  const { user, loading, error } = useUserFecth();
-
-  if(loading){
-    return null;
-  }
 
   const containerStyles = {
     minHeight: '70vh',
@@ -28,16 +24,18 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline/>
-      <Layout>
-          <Container
-            sx={containerStyles}
-          >
-            <Card user={user} />
-          </Container>
-      </Layout>
-    </ThemeProvider>
+    <AppProvider>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline/>
+        <Layout>
+            <Container
+              sx={containerStyles}
+            >
+              <Card />
+            </Container>
+        </Layout>
+      </ThemeProvider>
+    </AppProvider>
   )
 }
 

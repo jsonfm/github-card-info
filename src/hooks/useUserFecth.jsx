@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { UserService } from "@/services/user.service";
 
 
-const userService = new UserService();
+export const userService = new UserService();
 
 
 export const useUserFecth = (username="octocat") => {
+
     const [user, setUser] = useState(undefined);
     const [error, setError] = useState(undefined);
     const [loading, setLoading] = useState(true);
@@ -15,7 +16,6 @@ export const useUserFecth = (username="octocat") => {
             const response = await userService.getUser(username);
             setUser(response);
             setLoading(false);
-            console.log("response: ", response);
         }catch(err){
             setError(err);
         }
@@ -28,7 +28,6 @@ export const useUserFecth = (username="octocat") => {
     return {
         user,
         error,
-        loading,
-        setUser
+        loading
     }
 }
