@@ -5,7 +5,9 @@ import { useAppContext } from "@/store/context";
 import { UserService } from "@/services/user.service";
 import { actionTypes } from "@/reducers";
 
+
 const userService = new UserService();
+
 
 export const SearchBar = () => {
 

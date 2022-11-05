@@ -1,7 +1,11 @@
 import { Container, Typography } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
+import { useThemeContext } from "@/theme/context";
+
 
 export const Header = () => {
+    const colorMode = useThemeContext();
+
     return(
         <Container
             sx={{
@@ -17,6 +21,7 @@ export const Header = () => {
                 sx={{
                     cursor: 'pointer',
                 }}
+                onClick={colorMode.toggleColorMode} color="inherit"
             />
         </Container>
     )
