@@ -1,5 +1,7 @@
 import { Container, Typography } from '@mui/material';
-
+import GitHubIcon from '@mui/icons-material/GitHub';
+import Link from '@mui/material/Link';
+import Stack from '@mui/material/Stack';
 export const Footer = () => {
     const footerStyles = {
         clear: "both",
@@ -8,7 +10,16 @@ export const Footer = () => {
     }
     return(
         <Container sx={footerStyles}>
-            <Typography variant="h6">All right reserved.</Typography>
+            <Stack
+                direction="row"
+                justifyContent="center"
+                spacing={1}
+            >
+                <Typography variant="h6">Made by <b>jsonfm</b>.</Typography>
+                <Link href="https://github.com/jsonfm/github-card-info" target="_blank" rel="noopener noreferrer">
+                    <GitHubIcon/>
+                </Link>
+            </Stack>
         </Container>
     )
 }
