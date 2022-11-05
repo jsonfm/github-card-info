@@ -15,7 +15,8 @@ export const SearchBar = () => {
     const { dispatch } = useAppContext();
 
     const stackStyles = {
-        width: '80%',
+        width: '100%',
+        maxWidth: '600px',
         margin: '0 auto'
     }
     const textFieldStyles = {
