@@ -1,7 +1,5 @@
 import { Grid, Typography} from "@mui/material";
 import { Image } from 'mui-image';
-import { ErrorAlert } from '@/components/ErrorAlert';
-
 
 export const CardData = ({ user }) => {
 
@@ -68,8 +66,6 @@ export const CardData = ({ user }) => {
               </Grid>
           </Grid>
         </Grid>
-
-        <ErrorAlert />
 
         </Grid>      
     )

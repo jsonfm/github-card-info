@@ -18,7 +18,7 @@ export function ErrorAlert() {
 
   return (
     <>
-        <Snackbar open={!!error} autoHideDuration={6000} onClose={handleClose}>
+        <Snackbar  open={!!error} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical:'bottom', horizontal: 'right' }}>
             <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
                 {error}
             </Alert>

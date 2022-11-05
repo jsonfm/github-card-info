@@ -2,6 +2,8 @@ import { SearchBar } from "@/components/SearchBar";
 import { Box } from "@mui/material";
 import { useAppContext } from '@/store/context';
 import { CardData } from "@/components/CardData";
+import { ErrorAlert } from '@/components/ErrorAlert';
+
 
 export const Card = () => {
 
@@ -23,6 +25,7 @@ export const Card = () => {
       >
         <SearchBar />
         <CardData user={user}/>
+        <ErrorAlert />
       </Box>
     )
 }
