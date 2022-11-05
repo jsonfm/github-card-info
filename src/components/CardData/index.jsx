@@ -69,7 +69,7 @@ export const CardData = ({ user }) => {
           </Grid>
         </Grid>
 
-        <ErrorAlert message={user.message}/>
+        <ErrorAlert />
 
         </Grid>      
     )

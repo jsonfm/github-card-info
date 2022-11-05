@@ -25,7 +25,13 @@ export const SearchBar = () => {
         try{
             dispatch({ type: actionTypes.SET_LOADING, payload: true });
             const response = await userService.getUser(username || "octocat");
-            dispatch({ type: actionTypes.SET_USER, payload: response });
+
+            if(!!response.message){
+                dispatch({ type: actionTypes.SET_ERROR, payload: response.message });
+            }else{
+                dispatch({ type: actionTypes.SET_USER, payload: response });
+            }
+            
             dispatch({ type: actionTypes.SET_LOADING, payload: false });
         }catch(err){
             dispatch({ type: actionTypes.SET_ERROR, payload: err.message });
