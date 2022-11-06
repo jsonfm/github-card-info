@@ -19,6 +19,7 @@ export const SearchBar = () => {
         maxWidth: '600px',
         margin: '0 auto'
     }
+
     const textFieldStyles = {
         width: '90%',
         margin: '0 auto'
@@ -28,7 +29,7 @@ export const SearchBar = () => {
         try{
             dispatch({ type: actionTypes.SET_LOADING, payload: true });
             const response = await userService.getUser(username || "octocat");
-            console.log("response: ", response);
+        
             if(!!response.message){
                 dispatch({ type: actionTypes.SET_ERROR, payload: response.message });
             }else{
@@ -62,6 +63,7 @@ export const SearchBar = () => {
                 id="outlined-basic"
                 placeholder="Octocat"
                 label="Github User"
+                color="warning"
                 sx={textFieldStyles}
                 onChange={onChange}
                 InputProps={{

@@ -1,6 +1,9 @@
-import { Grid, Typography, Paper } from "@mui/material";
+import { Grid, Typography, Paper, Link } from "@mui/material";
 import { Image } from 'mui-image';
 import { useAppContext } from '@/store/context';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkIcon from '@mui/icons-material/Link';
+
 
 export const CardData = () => {
     const { state } = useAppContext();
@@ -17,6 +20,9 @@ export const CardData = () => {
         public_repos = "-",
         followers,
         following,
+        login,
+        html_url,
+        twitter_username,
     } = user;
 
     return ( 
@@ -32,10 +38,26 @@ export const CardData = () => {
                 />
             </Grid>
             <Grid sm={8} xs={12} item >
-                <Typography variant="h5" sx={{marginBottom: "12px"}}>{name}</Typography>
+                <Typography variant="h5" sx={{marginBottom: "12px", color: "#ED6C03"}}>{name}</Typography>
                 <Typography textAlign="justify" width="100%">
-                    {bio ? bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur repellat, rem nobis odit atque a aspernatur nihil iure ducimus voluptatum quas ipsa veniam suscipit officiis enim similique incidunt deserunt facilis!"} 
+                    {bio ? bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolorum animi cumque eaque ab voluptate rem ea. Tempora, ratione reprehenderit?"} 
                 </Typography>
+                <Grid
+                    container
+                    alignItems="center"
+                    sx={{gap: "16px"}}
+                >
+                    <Link underline="hover" href={html_url} target="_blank" rel="noopener noreferrer" sx={{display: "flex", gap: "2px", alignItems: "center"}}>
+                        <LinkIcon />
+                        <p>@{login}</p>
+                    </Link>
+                    {twitter_username &&
+                        <Link underline="hover" href={`https://twitter.com/${twitter_username}`} target="_blank" rel="noopener noreferrer"  sx={{display: "flex", gap: "2px", alignItems: "center"}}>
+                            <TwitterIcon/>
+                            <p>@{twitter_username}</p>
+                        </Link>
+                    }
+                </Grid>
                 <Paper  elevation={2} sx={{marginTop: "16px", display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <Grid
                         sx={{margin: "16px auto", maxWidth: "700px", border: "", padding: "0 2rem"}}

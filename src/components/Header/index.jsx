@@ -16,7 +16,7 @@ export const Header = () => {
             }}
             
         >
-            <Typography variant="h5"><b>{`<DevSearcher />`}</b></Typography>
+            <Typography sx={{color: "#ED6C03"}} variant="h5"><b>{`<DevSearcher />`}</b></Typography>
             <Brightness4Icon
                 sx={{
                     cursor: 'pointer',
